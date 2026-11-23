@@ -121,27 +121,23 @@ a:focus-visible{outline:2px solid var(--blu);outline-offset:3px}
 @keyframes affiora{from{filter:grayscale(1) contrast(1.45) brightness(1.2) blur(6px)}to{filter:grayscale(1) contrast(1.45) brightness(1.2) blur(0)}}
 @keyframes velo{from{opacity:1}35%{opacity:.75}to{opacity:0}}
 
-/* il rullino in 3D sopra la testata: fatto solo con lo stile, nessuna libreria.
-   36 facce con luce fissa (calcolata per la posa di riposo); il rullino dondola appena, così la scritta e la pellicola restano sempre davanti. */
-.scena{height:210px;display:flex;align-items:center;justify-content:center;perspective:1000px;position:relative;margin:4px 0 2px}
-.rullino3d{--corpo:linear-gradient(var(--blu-3) 0 3px,var(--blu) 3px 7px,#14324f 7px 9px,var(--blu-2) 9px 16px,var(--carta) 16px 84px,var(--blu) 84px 88px,var(--carta) 88px 92px,var(--blu) 92px 108px,var(--blu-2) 108px 115px,#14324f 115px 117px,var(--blu) 117px 121px,var(--blu-3) 121px);
-  position:relative;width:92px;height:124px;transform-style:preserve-3d;transform:rotateX(-12deg) rotateY(-18deg);animation:dondola 7s ease-in-out infinite alternate}
-@keyframes dondola{from{transform:rotateX(-12deg) rotateY(-40deg)}to{transform:rotateX(-12deg) rotateY(4deg)}}
-.rullino3d .faccia{position:absolute;left:41.6px;top:0;width:8.8px;height:124px;backface-visibility:hidden;font-style:normal;
-  font-family:var(--mono);font-size:11px;font-weight:500;color:var(--blu);text-align:center;line-height:1;padding-top:44px}
-.rullino3d .faccia.p{font-size:7px;font-weight:400;color:var(--carta);padding-top:97px}
-.rullino3d .tappo{position:absolute;left:-2px;top:14px;width:96px;height:96px;border-radius:50%;
-  background:radial-gradient(circle,#14324f 0 11px,var(--blu-3) 11px 14px,var(--blu) 14px 40px,var(--blu-3) 40px 42px,var(--blu) 42px)}
-.rullino3d .su{transform:rotateX(90deg) translateZ(62px)}
-.rullino3d .giu{transform:rotateX(-90deg) translateZ(62px)}
-.rullino3d .perno{position:absolute;left:36px;top:52px;width:20px;height:20px;border-radius:50%;background:var(--blu)}
-.rullino3d .p1{transform:rotateX(90deg) translateZ(64px)}
-.rullino3d .p2{transform:rotateX(90deg) translateZ(68px)}
-.rullino3d .p3{transform:rotateX(90deg) translateZ(72px);background:radial-gradient(circle,#14324f 0 4px,var(--blu-3) 4px)}
-.rullino3d .feritoia{position:absolute;left:44px;top:22px;width:5px;height:80px;background:#0e2238;transform:rotateY(74deg) translateZ(46.2px)}
-.rullino3d .coda{position:absolute;left:46px;top:28px;width:132px;height:68px;transform-origin:0 50%;transform:rotateY(74deg) translateZ(46.4px) rotateY(-64deg);
-  background:radial-gradient(circle,var(--carta) 0 2.4px,transparent 2.9px) 4px 3px/12px 10px repeat-x,radial-gradient(circle,var(--carta) 0 2.4px,transparent 2.9px) 4px 55px/12px 10px repeat-x,linear-gradient(90deg,#0e2238,var(--blu) 30%,var(--blu-3) 85%,var(--blu-2));
-  clip-path:polygon(0 0,74% 0,100% 34%,100% 100%,0 100%)}
-.scena .ombra{position:absolute;bottom:20px;left:50%;width:190px;height:20px;margin-left:-82px;border-radius:50%;background:radial-gradient(rgba(31,78,121,.24),transparent 70%)}
+/* il girasole in 3D sopra la testata: il fiore di _incontroluce a strati (petali, disco, obiettivo che sporge).
+   Fatto solo con lo stile e con un SVG: il diaframma al centro si chiude e si riapre ogni 6 secondi, con un piccolo lampo. */
+.scena{height:240px;display:flex;align-items:center;justify-content:center;perspective:900px;position:relative;margin:6px 0 0}
+.girasole{position:relative;width:196px;height:196px;transform-style:preserve-3d;transform:rotateX(8deg) rotateY(-16deg);animation:ondeggia 12s ease-in-out infinite alternate}
+@keyframes ondeggia{0%{transform:rotateX(12deg) rotateY(-26deg)}50%{transform:rotateX(-6deg) rotateY(4deg)}100%{transform:rotateX(10deg) rotateY(24deg)}}
+.girasole .strato{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.girasole .petali{fill:none;stroke:var(--blu);stroke-width:5;stroke-linecap:round;stroke-linejoin:round}
+.girasole .petali .pt{fill:var(--carta)}
+.girasole .raggi{transform-box:view-box;transform-origin:250px 250px;animation:raggi 6s linear infinite}
+@keyframes raggi{0%,83%{transform:scale(1);stroke-width:5}87%{transform:scale(1.12);stroke-width:9}97%,100%{transform:scale(1);stroke-width:5}}
+.girasole .disco{transform:translateZ(6px);fill:var(--blu)}
+.girasole .disco .fondo{fill:var(--carta)}
+.girasole .anello{position:absolute;left:50%;top:50%;width:40px;height:40px;margin:-20px 0 0 -20px;border-radius:50%;background:var(--carta);border:1.5px solid var(--blu)}
+.girasole .obiettivo{transform:translateZ(22px)}
+.girasole .vetro{fill:var(--carta)}
+.girasole .foro{fill:#14324f}
+.girasole .lamelle,.girasole .ghiera{fill:none;stroke:var(--blu);stroke-width:5;stroke-linecap:round}
+.scena .ombra{position:absolute;bottom:6px;left:50%;width:200px;height:20px;margin-left:-100px;border-radius:50%;background:radial-gradient(rgba(31,78,121,.2),transparent 70%)}
 
-@media (prefers-reduced-motion:reduce){.sviluppa img,.sviluppa::before,.rullino3d{animation:none}.sviluppa::before{opacity:0}}
+@media (prefers-reduced-motion:reduce){.sviluppa img,.sviluppa::before,.girasole,.girasole .raggi{animation:none}.sviluppa::before{opacity:0}}
