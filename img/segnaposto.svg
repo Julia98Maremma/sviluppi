@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" width="800" height="1000">
+  <rect width="800" height="1000" fill="#2f5d8a"/>
+  <rect x="40" y="40" width="720" height="920" fill="none" stroke="#c9d4e0" stroke-width="2" stroke-dasharray="10 10"/>
+  <text x="400" y="490" text-anchor="middle" font-family="Georgia, serif" font-style="italic" font-size="56" fill="#f4f1ea">la tua foto</text>
+  <text x="400" y="550" text-anchor="middle" font-family="Menlo, monospace" font-size="22" letter-spacing="4" fill="#c9d4e0">segnaposto</text>
+</svg>
