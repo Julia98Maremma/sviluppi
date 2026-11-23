@@ -103,3 +103,32 @@ a:focus-visible{outline:2px solid var(--blu);outline-offset:3px}
 .archivio .data{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.12em;color:var(--tenue);font-style:normal;margin-top:2px}
 
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+
+/* il fiore di _incontroluce (img/fiore.svg, colorato con currentColor) */
+.fiore{display:block;margin:0 auto;color:var(--blu);stroke-width:4.5}
+.testata .fiore{width:56px;height:56px;margin-bottom:12px;stroke-width:7}
+.piede .fiore{width:80px;height:80px;margin-bottom:10px;stroke-width:5.5}
+
+/* la copertina che si sviluppa: un velo color carta si ritira e la foto passa da sfocata a nitida, come nella bacinella */
+.sviluppa img{animation:affiora 4.5s cubic-bezier(.3,.1,.2,1) .4s both}
+.sviluppa::before{content:"";position:absolute;inset:0;z-index:2;background:var(--carta);pointer-events:none;animation:velo 4.5s cubic-bezier(.3,.1,.2,1) .4s both}
+@keyframes affiora{from{filter:grayscale(1) contrast(1.45) brightness(1.2) blur(6px)}to{filter:grayscale(1) contrast(1.45) brightness(1.2) blur(0)}}
+@keyframes velo{from{opacity:1}35%{opacity:.75}to{opacity:0}}
+
+/* il rullino in 3D sopra la testata: fatto solo con lo stile, nessuna libreria */
+.scena{height:200px;display:flex;align-items:center;justify-content:center;perspective:900px;position:relative;margin:6px 0 -6px}
+.rullino3d{position:relative;width:80px;height:118px;transform-style:preserve-3d;transform:rotateX(-16deg) rotateY(-30deg);animation:gira 16s linear infinite}
+@keyframes gira{from{transform:rotateX(-16deg) rotateY(0)}to{transform:rotateX(-16deg) rotateY(-360deg)}}
+.rullino3d .faccia{position:absolute;left:34px;top:0;width:13px;height:118px;backface-visibility:hidden;
+  background:linear-gradient(var(--blu) 0 10px,#173d60 10px 12px,var(--blu-2) 12px 32px,var(--carta) 32px 86px,var(--blu-2) 86px 106px,#173d60 106px 108px,var(--blu) 108px);
+  font-family:var(--mono);font-size:11px;font-weight:500;color:var(--blu);display:flex;align-items:center;justify-content:center;line-height:1}
+.rullino3d .tappo{position:absolute;left:0;top:19px;width:80px;height:80px;border-radius:50%;background:radial-gradient(circle,#173d60 0 9px,var(--blu-3) 9px 13px,var(--blu) 13px)}
+.rullino3d .su{transform:rotateX(90deg) translateZ(59px)}
+.rullino3d .giu{transform:rotateX(-90deg) translateZ(59px)}
+.rullino3d .perno{position:absolute;left:30px;top:49px;width:20px;height:20px;border-radius:50%;background:var(--blu-3);transform:rotateX(90deg) translateZ(70px)}
+.rullino3d .coda{position:absolute;left:40px;top:30px;width:120px;height:58px;transform-origin:0 50%;transform:translateZ(39px) rotateY(-8deg);
+  background:radial-gradient(circle,var(--carta) 0 2.5px,transparent 3px) 0 2px/11px 10px repeat-x,radial-gradient(circle,var(--carta) 0 2.5px,transparent 3px) 0 46px/11px 10px repeat-x,linear-gradient(90deg,#173d60,var(--blu-3) 70%,var(--blu-2));
+  clip-path:polygon(0 0,82% 0,100% 30%,100% 100%,0 100%)}
+.scena .ombra{position:absolute;bottom:12px;left:50%;width:150px;height:18px;margin-left:-75px;border-radius:50%;background:radial-gradient(rgba(31,78,121,.22),transparent 70%)}
+
+@media (prefers-reduced-motion:reduce){.sviluppa img,.sviluppa::before,.rullino3d{animation:none}.sviluppa::before{opacity:0}}
