@@ -23,8 +23,8 @@ a:focus-visible{outline:2px solid var(--blu);outline-offset:3px}
 .pagina{max-width:36rem;margin:0 auto;padding:0 20px 64px}
 
 /* tacche della pellicola */
-.mono{font-family:var(--mono);font-size:12px;letter-spacing:.14em;color:var(--blu-3);text-transform:lowercase}
-.tacca{font-family:var(--mono);font-size:12px;letter-spacing:.14em;color:var(--blu-3);margin:0 0 10px}
+.mono{font-family:var(--mono);font-size:13px;letter-spacing:.14em;color:var(--blu-3);text-transform:lowercase}
+.tacca,.rubrica h2.tacca{font-family:var(--mono);font-size:13px;font-weight:400;line-height:1.7;letter-spacing:.14em;color:var(--blu-3);margin:0 0 10px}
 .tacca b{font-weight:500;color:var(--blu)}
 .pellicola{height:14px;margin:48px -20px;background:
   radial-gradient(circle at 50% 50%,var(--carta) 0 3px,transparent 3.5px) 0 0/22px 14px,
@@ -35,7 +35,7 @@ a:focus-visible{outline:2px solid var(--blu);outline-offset:3px}
 
 /* testata */
 .testata{text-align:center;padding:36px 0 22px}
-.testata .nome{font-family:var(--display);font-style:italic;font-weight:400;font-size:clamp(64px,19vw,104px);line-height:.95;color:var(--blu);margin:10px 0 6px;letter-spacing:-.01em}
+.testata .nome{font-family:var(--display);font-style:italic;font-weight:400;font-size:clamp(64px,19vw,104px);line-height:1.05;color:var(--blu);margin:8px 0 .2em;letter-spacing:-.01em}
 .testata .nome a{color:inherit;text-decoration:none}
 .filo{height:1px;background:var(--blu-3);margin:18px auto 0;width:64px}
 
@@ -47,8 +47,12 @@ a:focus-visible{outline:2px solid var(--blu);outline-offset:3px}
 @media (min-width:600px){.copertina,.ultimo .ciano{margin:0;border-radius:2px}}
 
 .titolo-numero{font-family:var(--display);font-style:italic;font-weight:400;font-size:clamp(34px,9vw,46px);line-height:1.1;color:var(--blu);text-align:center;margin:28px 0 0}
-.apertura{font-family:var(--display);font-style:italic;font-size:21px;line-height:1.55;color:var(--inchiostro);text-align:center;margin:20px auto 0;max-width:30rem}
-.firma{font-family:var(--mono);font-size:12px;letter-spacing:.14em;color:var(--blu-3);text-align:center;margin-top:12px}
+.apertura{font-family:var(--display);font-style:italic;font-size:19px;line-height:1.55;color:var(--inchiostro);text-align:center;margin:20px auto 0;max-width:30rem}
+/* editoriale di apertura del numero: allineato a sinistra, la prima frase in corsivo blu */
+.editoriale{max-width:32rem;margin:24px auto 0}
+.editoriale p{margin:0 0 1em}
+.editoriale .attacco{font-family:var(--display);font-style:italic;font-size:23px;line-height:1.45;color:var(--blu)}
+.firma{font-family:var(--mono);font-size:13px;letter-spacing:.14em;color:var(--blu-3);text-align:right;margin-top:12px}
 
 /* sommario */
 .sommario{list-style:none;padding:0;margin:40px 0 0;border-top:1px solid var(--blu-chiaro)}
@@ -69,14 +73,16 @@ a:focus-visible{outline:2px solid var(--blu);outline-offset:3px}
 .tre li:last-child{border-bottom:1px solid var(--blu-chiaro)}
 .tre h3{font-family:var(--display);font-weight:400;font-size:22px;line-height:1.25;margin:0 0 4px;color:var(--inchiostro)}
 .tre p{margin:0;font-size:16px;color:var(--tenue)}
-.fonte{font-family:var(--mono);font-size:12px;letter-spacing:.06em}
+.fonte{font-family:var(--mono);font-size:13px;letter-spacing:.04em}
+/* link piccoli: più spazio da toccare col pollice, senza spostare il testo */
+.fonte a,.fonti a,.piede p a{padding:6px 0}
 
 .opera{margin:0 0 26px}
 .opera img{width:100%;height:auto;background:var(--carta-2);outline:1px solid rgba(31,78,121,.35)}
-.didascalia{font-family:var(--mono);font-size:11px;letter-spacing:.06em;line-height:1.5;color:var(--tenue);margin-top:8px}
+.didascalia{font-size:14px;line-height:1.5;color:var(--tenue);margin-top:8px}
 
 .scoperta{border:1px solid var(--blu);padding:22px 20px;background:var(--carta)}
-.scoperta .dove{font-family:var(--mono);font-size:12px;letter-spacing:.1em;color:var(--blu-3);margin:0 0 12px}
+.scoperta .dove{font-family:var(--mono);font-size:13px;letter-spacing:.1em;color:var(--blu-3);margin:0 0 12px}
 
 .rullino{padding:12px;background:var(--blu)}
 .rullino img{width:100%;aspect-ratio:3/2;object-fit:cover}
@@ -100,7 +106,7 @@ a:focus-visible{outline:2px solid var(--blu);outline-offset:3px}
 .archivio li{border-top:1px solid var(--blu-chiaro)}
 .archivio a{display:grid;grid-template-columns:4.2em minmax(0,1fr);gap:12px;align-items:baseline;padding:14px 2px;text-decoration:none;color:var(--inchiostro)}
 .archivio .titolo{font-family:var(--display);font-style:italic;font-size:21px;line-height:1.25}
-.archivio .data{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.12em;color:var(--tenue);font-style:normal;margin-top:2px}
+.archivio .data{display:block;font-family:var(--mono);font-size:12px;letter-spacing:.12em;color:var(--tenue);font-style:normal;margin-top:2px}
 
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 
@@ -115,20 +121,27 @@ a:focus-visible{outline:2px solid var(--blu);outline-offset:3px}
 @keyframes affiora{from{filter:grayscale(1) contrast(1.45) brightness(1.2) blur(6px)}to{filter:grayscale(1) contrast(1.45) brightness(1.2) blur(0)}}
 @keyframes velo{from{opacity:1}35%{opacity:.75}to{opacity:0}}
 
-/* il rullino in 3D sopra la testata: fatto solo con lo stile, nessuna libreria */
-.scena{height:200px;display:flex;align-items:center;justify-content:center;perspective:900px;position:relative;margin:6px 0 -6px}
-.rullino3d{position:relative;width:80px;height:118px;transform-style:preserve-3d;transform:rotateX(-16deg) rotateY(-30deg);animation:gira 16s linear infinite}
-@keyframes gira{from{transform:rotateX(-16deg) rotateY(0)}to{transform:rotateX(-16deg) rotateY(-360deg)}}
-.rullino3d .faccia{position:absolute;left:34px;top:0;width:13px;height:118px;backface-visibility:hidden;
-  background:linear-gradient(var(--blu) 0 10px,#173d60 10px 12px,var(--blu-2) 12px 32px,var(--carta) 32px 86px,var(--blu-2) 86px 106px,#173d60 106px 108px,var(--blu) 108px);
-  font-family:var(--mono);font-size:11px;font-weight:500;color:var(--blu);display:flex;align-items:center;justify-content:center;line-height:1}
-.rullino3d .tappo{position:absolute;left:0;top:19px;width:80px;height:80px;border-radius:50%;background:radial-gradient(circle,#173d60 0 9px,var(--blu-3) 9px 13px,var(--blu) 13px)}
-.rullino3d .su{transform:rotateX(90deg) translateZ(59px)}
-.rullino3d .giu{transform:rotateX(-90deg) translateZ(59px)}
-.rullino3d .perno{position:absolute;left:30px;top:49px;width:20px;height:20px;border-radius:50%;background:var(--blu-3);transform:rotateX(90deg) translateZ(70px)}
-.rullino3d .coda{position:absolute;left:40px;top:30px;width:120px;height:58px;transform-origin:0 50%;transform:translateZ(39px) rotateY(-8deg);
-  background:radial-gradient(circle,var(--carta) 0 2.5px,transparent 3px) 0 2px/11px 10px repeat-x,radial-gradient(circle,var(--carta) 0 2.5px,transparent 3px) 0 46px/11px 10px repeat-x,linear-gradient(90deg,#173d60,var(--blu-3) 70%,var(--blu-2));
-  clip-path:polygon(0 0,82% 0,100% 30%,100% 100%,0 100%)}
-.scena .ombra{position:absolute;bottom:12px;left:50%;width:150px;height:18px;margin-left:-75px;border-radius:50%;background:radial-gradient(rgba(31,78,121,.22),transparent 70%)}
+/* il rullino in 3D sopra la testata: fatto solo con lo stile, nessuna libreria.
+   36 facce con luce fissa (calcolata per la posa di riposo); il rullino dondola appena, così la scritta e la pellicola restano sempre davanti. */
+.scena{height:210px;display:flex;align-items:center;justify-content:center;perspective:1000px;position:relative;margin:4px 0 2px}
+.rullino3d{--corpo:linear-gradient(var(--blu-3) 0 3px,var(--blu) 3px 7px,#14324f 7px 9px,var(--blu-2) 9px 16px,var(--carta) 16px 84px,var(--blu) 84px 88px,var(--carta) 88px 92px,var(--blu) 92px 108px,var(--blu-2) 108px 115px,#14324f 115px 117px,var(--blu) 117px 121px,var(--blu-3) 121px);
+  position:relative;width:92px;height:124px;transform-style:preserve-3d;transform:rotateX(-12deg) rotateY(-18deg);animation:dondola 7s ease-in-out infinite alternate}
+@keyframes dondola{from{transform:rotateX(-12deg) rotateY(-40deg)}to{transform:rotateX(-12deg) rotateY(4deg)}}
+.rullino3d .faccia{position:absolute;left:41.6px;top:0;width:8.8px;height:124px;backface-visibility:hidden;font-style:normal;
+  font-family:var(--mono);font-size:11px;font-weight:500;color:var(--blu);text-align:center;line-height:1;padding-top:44px}
+.rullino3d .faccia.p{font-size:7px;font-weight:400;color:var(--carta);padding-top:97px}
+.rullino3d .tappo{position:absolute;left:-2px;top:14px;width:96px;height:96px;border-radius:50%;
+  background:radial-gradient(circle,#14324f 0 11px,var(--blu-3) 11px 14px,var(--blu) 14px 40px,var(--blu-3) 40px 42px,var(--blu) 42px)}
+.rullino3d .su{transform:rotateX(90deg) translateZ(62px)}
+.rullino3d .giu{transform:rotateX(-90deg) translateZ(62px)}
+.rullino3d .perno{position:absolute;left:36px;top:52px;width:20px;height:20px;border-radius:50%;background:var(--blu)}
+.rullino3d .p1{transform:rotateX(90deg) translateZ(64px)}
+.rullino3d .p2{transform:rotateX(90deg) translateZ(68px)}
+.rullino3d .p3{transform:rotateX(90deg) translateZ(72px);background:radial-gradient(circle,#14324f 0 4px,var(--blu-3) 4px)}
+.rullino3d .feritoia{position:absolute;left:44px;top:22px;width:5px;height:80px;background:#0e2238;transform:rotateY(74deg) translateZ(46.2px)}
+.rullino3d .coda{position:absolute;left:46px;top:28px;width:132px;height:68px;transform-origin:0 50%;transform:rotateY(74deg) translateZ(46.4px) rotateY(-64deg);
+  background:radial-gradient(circle,var(--carta) 0 2.4px,transparent 2.9px) 4px 3px/12px 10px repeat-x,radial-gradient(circle,var(--carta) 0 2.4px,transparent 2.9px) 4px 55px/12px 10px repeat-x,linear-gradient(90deg,#0e2238,var(--blu) 30%,var(--blu-3) 85%,var(--blu-2));
+  clip-path:polygon(0 0,74% 0,100% 34%,100% 100%,0 100%)}
+.scena .ombra{position:absolute;bottom:20px;left:50%;width:190px;height:20px;margin-left:-82px;border-radius:50%;background:radial-gradient(rgba(31,78,121,.24),transparent 70%)}
 
 @media (prefers-reduced-motion:reduce){.sviluppa img,.sviluppa::before,.rullino3d{animation:none}.sviluppa::before{opacity:0}}
