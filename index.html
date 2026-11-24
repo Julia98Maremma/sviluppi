@@ -51,12 +51,12 @@
   </header>
 
   <p class="tacca" style="text-align:center"><b>questa settimana</b> ▸ n. 0</p>
-  <a class="ultimo" href="numeri/000-il-fuoco-giusto.html">
+  <a class="ultimo" href="numeri/000-il-primo-successo.html">
     <figure class="ciano sviluppa">
-      <img src="img/segnaposto.svg" alt="Copertina del numero zero, virata in blu">
+      <img src="img/000-copertina-terme.jpg" width="1199" height="1800" alt="Copertina del numero zero: una ragazza nell'acqua termale avvolta dal vapore, virata in blu">
     </figure>
-    <h2 class="titolo-numero">Il fuoco giusto</h2>
-    <p class="apertura">Julia Margaret Cameron, un pollaio a vetri e il primo successo di una fotografa che sbagliava apposta.</p>
+    <h2 class="titolo-numero"><!--t:titolo-->Il primo successo<!--/t:titolo--></h2>
+    <p class="apertura"><!--t:riassunto-->Julia Margaret Cameron, un pollaio a vetri e una fotografa che sbagliava apposta.<!--/t:riassunto--></p>
     <p style="text-align:center;margin:18px 0 0"><span class="pulsante">Sfoglia il numero</span></p>
   </a>
 
@@ -65,7 +65,7 @@
   <section>
     <h2 class="tacca"><b>archivio</b> ▸ tutti i numeri</h2>
     <ol class="archivio">
-      <li><a href="numeri/000-il-fuoco-giusto.html"><span class="tacca" style="margin:0"><b>n. 0</b></span><span class="titolo">Il fuoco giusto<span class="data">30 novembre 2026</span></span></a></li>
+      <li><a href="numeri/000-il-primo-successo.html"><span class="tacca" style="margin:0"><b>n. 0</b></span><span class="titolo"><!--t:titolo-archivio-->Il primo successo<!--/t:titolo-archivio--><span class="data">30 novembre 2026</span></span></a></li>
     </ol>
   </section>
 
@@ -76,6 +76,14 @@
   </footer>
 
 </main>
+<script>
+/* la copertina compare piano quando entra nello schermo */
+(function(){
+  if(matchMedia("(prefers-reduced-motion: reduce)").matches||!("IntersectionObserver" in window))return;
+  var io=new IntersectionObserver(function(voci){voci.forEach(function(v){if(v.isIntersecting){v.target.classList.add("in-vista");io.unobserve(v.target)}})},{threshold:.3});
+  document.querySelectorAll(".sviluppa").forEach(function(f){f.classList.add("pronta");io.observe(f)});
+})();
+</script>
 <script>if(matchMedia("(prefers-reduced-motion: reduce)").matches){document.querySelectorAll(".girasole svg").forEach(function(s){s.pauseAnimations()})}</script>
 </body>
 </html>
