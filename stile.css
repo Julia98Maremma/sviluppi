@@ -130,7 +130,7 @@ a:focus-visible{outline:2px solid var(--blu);outline-offset:3px}
 @keyframes velo{from{opacity:1}35%{opacity:.75}to{opacity:0}}
 
 /* la pagina fissa: la prima schermata riempie il telefono (meno l'altezza della fascia «Bozza»: al lancio diventa 100svh) */
-.eroe{min-height:calc(100svh - 41px);display:flex;flex-direction:column;padding:16px 0 0}
+.eroe{position:relative;min-height:calc(100svh - 41px);display:flex;flex-direction:column;padding:10px 0 12px}
 /* la copertina della rivista: un unico foglio (testata + foto) con un'ombra leggera, come una rivista appoggiata sul tavolo.
    È la stessa nella pagina fissa e all'inizio del numero. */
 .copertina-rivista{flex:1 1 auto;display:flex;flex-direction:column;margin:0 -6px;background:var(--carta);color:inherit;text-decoration:none;
@@ -142,8 +142,10 @@ a:focus-visible{outline:2px solid var(--blu);outline-offset:3px}
 .copertina-rivista .copertina{flex:1 1 auto;aspect-ratio:auto;min-height:240px;margin:0}
 .copertina-rivista .copertina img{position:absolute;inset:0;object-position:50% 42%}
 /* il pulsante sotto la copertina, con la freccia che si muove piano */
-.sfoglia{display:flex;align-items:center;justify-content:center;gap:12px;align-self:center;min-height:50px;margin:18px 0 20px;padding:12px 26px;
-  background:var(--blu);color:var(--carta);font-family:var(--mono);font-size:14px;letter-spacing:.14em;text-decoration:none}
+/* il pulsante sta sopra la foto, in basso al centro, così la copertina riempie tutto lo schermo */
+.sfoglia{position:absolute;left:50%;bottom:36px;transform:translateX(-50%);z-index:5;white-space:nowrap;display:flex;align-items:center;justify-content:center;gap:12px;min-height:50px;margin:0;padding:12px 26px;
+  background:var(--blu);color:var(--carta);font-family:var(--mono);font-size:14px;letter-spacing:.14em;text-decoration:none;
+  border:1px solid rgba(244,241,234,.55);box-shadow:0 8px 20px -6px rgba(10,25,45,.55)}
 .sfoglia span{display:inline-block;animation:freccia 2s ease-in-out infinite}
 @keyframes freccia{0%,100%{transform:translate(0,0)}50%{transform:translate(4px,3px)}}
 .sfoglia:focus-visible,.copertina-rivista:focus-visible{outline:2px solid var(--blu);outline-offset:4px}
@@ -151,8 +153,18 @@ a:focus-visible{outline:2px solid var(--blu);outline-offset:3px}
 /* pagina fissa: sotto la copertina il titolo e le due righe del numero; il campo di girasoli chiude la pagina */
 .questa-settimana{text-align:center;padding-top:30px}
 .questa-settimana .titolo-numero{margin-top:10px}
-.finale{margin:48px -20px 0}
-.finale .campo{height:430px;margin:0}
+/* nella pagina fissa la copertina si apre con il campo: il girasole spunta, scatta una volta e torna giù,
+   il campo sfuma e al suo posto compare la foto, che resta fino a quando si ricarica la pagina */
+.cr-scena{position:relative;flex:1 1 auto;min-height:330px;overflow:hidden}
+.cr-scena .campo{position:absolute;inset:0;animation:campo-via .7s ease 5.2s forwards}
+@keyframes campo-via{to{opacity:0;visibility:hidden}}
+.cr-scena .copertina{position:absolute;inset:0;min-height:0;opacity:0;animation:compare-foto .3s linear 5.5s forwards}
+@keyframes compare-foto{to{opacity:1}}
+.cr-scena .pianta{animation:spunta-una 6s cubic-bezier(.45,0,.25,1) forwards}
+@keyframes spunta-una{0%,8%{transform:translateY(360px)}28%{transform:translateY(-6px)}33%,62%{transform:translateY(0)}85%,100%{transform:translateY(360px)}}
+.cr-scena .raggi{animation:raggi-una 6s linear forwards}
+@keyframes raggi-una{0%,45.5%{transform:scale(1);stroke-width:5}48%{transform:scale(1.14);stroke-width:9}57%,100%{transform:scale(1);stroke-width:5}}
+.cr-scena .sviluppa.in-vista img,.cr-scena .sviluppa.in-vista::before{animation-delay:5.6s}
 .scorri{font-family:var(--mono);font-size:13px;letter-spacing:.14em;color:var(--blu-3);margin:14px 0 18px;animation:scorri 2.4s ease-in-out infinite}
 @keyframes scorri{0%,100%{transform:translateY(0)}50%{transform:translateY(5px)}}
 
@@ -192,4 +204,4 @@ a:focus-visible{outline:2px solid var(--blu);outline-offset:3px}
 .girasole .foro{fill:#14324f}
 .girasole .lamelle,.girasole .ghiera{fill:none;stroke:var(--blu);stroke-width:5;stroke-linecap:round}
 
-@media (prefers-reduced-motion:reduce){.girasole,.girasole .raggi,.pianta,.erba-davanti,.prato .fl,.nuvola,.uccelli,.scorri,.sfoglia span{animation:none}.pianta{transform:none}.n1{left:12%}.n2{left:58%}}
+@media (prefers-reduced-motion:reduce){.girasole,.girasole .raggi,.pianta,.erba-davanti,.prato .fl,.nuvola,.uccelli,.scorri,.sfoglia span{animation:none}.pianta{transform:none}.n1{left:12%}.n2{left:58%}.cr-scena .campo{display:none}.cr-scena .copertina{opacity:1;animation:none}}
